@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC_L1.Models.EmployeeView>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Карточка сотрудника</title>
+</head>
+<body>
+
+    <div>
+        <h4>Сотрудник</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @foreach (var item in Model)
+            {
+                <dt>
+                    @item.LastName
+                </dt>
+                <dd>
+                    @item.Name
+                </dd>
+                <dt>
+                    @item.Patronymic
+                </dt>
+                <dd>
+                    @item.Age
+                </dd>
+                <dt>
+                    @item.ID
+                </dt>
+            }
+        </dl>
+    </div>
+    <div>
+
+        @Html.ActionLink("Список работников", "Index")
+    </div>
+</body>
+</html>

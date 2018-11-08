@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ASP_L1": {
+    "MVC_L1": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
