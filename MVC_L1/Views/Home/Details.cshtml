@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC_L1.Models.EmployeeView>
+﻿@model MVC_L1.Models.EmployeeView
 
 @{
     Layout = null;
@@ -17,24 +17,19 @@
         <h4>Сотрудник</h4>
         <hr />
         <dl class="dl-horizontal">
-            @foreach (var item in Model)
-            {
-                <dt>
-                    @item.LastName
-                </dt>
+            <dt>
                 <dd>
-                    @item.Name
+                    @Model.LastName @Model.Name @Model.Patronymic
                 </dd>
-                <dt>
-                    @item.Patronymic
-                </dt>
-                <dd>
-                    @item.Age
-                </dd>
-                <dt>
-                    @item.ID
-                </dt>
-            }
+            </dt>
+            
+            <dd>
+                @Model.Age
+            </dd>
+            <dd>
+                @Model.ID
+            </dd>
+            
         </dl>
     </div>
     <div>

@@ -11,8 +11,8 @@ namespace MVC_L1.Controllers
     public class HomeController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly List<EmployeeView> _employees = new List<EmployeeView> {
-            new EmployeeView{ID = Guid.NewGuid(), Age = 10, LastName="Васечкин", Name="Петр", Patronymic="Иванов"},
-            new EmployeeView{ID = Guid.NewGuid(), Age = 60, LastName="Басаев", Name="Шамиль", Patronymic="Рауфович"},
+            new EmployeeView{ID = new Guid("db08861a-7f63-4ec6-9971-57d27fbeaad4"), Age = 10, LastName="Васечкин", Name="Петр", Patronymic="Иванович"},
+            new EmployeeView{ID = new Guid("db08861a-7f63-4ec6-9971-57d27fbeaad3"), Age = 60, LastName="Басаев", Name="Шамиль", Patronymic="Рауфович"},
         };
 
         public IActionResult Index()
@@ -22,7 +22,13 @@ namespace MVC_L1.Controllers
 
         public IActionResult Details(Guid guid)
         {
-            return View(_employees.FirstOrDefault(e => e.ID == guid));
+            EmployeeView employee = _employees.FirstOrDefault(e => e.ID == guid);
+            foreach (var e in _employees)
+                if (e.ID == guid)
+                    return View(employee);
+
+            
+            return NotFound();
         }
     }
 }
