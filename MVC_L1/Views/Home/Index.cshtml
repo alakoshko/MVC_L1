@@ -1,16 +1,10 @@
-﻿@model IEnumerable<MVC_L1.Models.EmployeeView>
+﻿@using MVC_L1.Models;
+
+@model IEnumerable<EmployeeView>
 @{
-    Layout = null;
+    ViewBag.Title = "Карточка сотрудника";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" charset="utf-8"/>
-    <title>Index</title>
-</head>
-<body>
     <p>Привет</p>
     <table>
         @foreach (var item in Model)
@@ -23,6 +17,4 @@
             <td>@Html.ActionLink("Детали", "Details", new { guid = item.ID })</td>
         </tr>
         }
-</table>
-</body>
-</html>
+    </table>
