@@ -2,33 +2,97 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MVC_L1.Models;
-using System.Net;
 
 namespace MVC_L1.Controllers
 {
-    public class HomeController : Microsoft.AspNetCore.Mvc.Controller
+    public class HomeController : Controller
     {
-        private readonly List<EmployeeView> _employees = new List<EmployeeView> {
-            new EmployeeView{ID = new Guid("db08861a-7f63-4ec6-9971-57d27fbeaad4"), Age = 10, LastName="Васечкин", Name="Петр", Patronymic="Иванович"},
-            new EmployeeView{ID = new Guid("db08861a-7f63-4ec6-9971-57d27fbeaad3"), Age = 60, LastName="Басаев", Name="Шамиль", Patronymic="Рауфович"},
-        };
-
+        // GET: Home
         public IActionResult Index()
         {
-            return View(_employees);
+            return View();
         }
 
-        public IActionResult Details(Guid guid)
+        public IActionResult Cart()
         {
-            EmployeeView employee = _employees.FirstOrDefault(e => e.ID == guid);
-            foreach (var e in _employees)
-                if (e.ID == guid)
-                    return View(employee);
+            return View();
+        }
 
-            
-            return NotFound();
+        // GET: Home/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+         
+        // GET: Home/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Home/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Home/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: Home/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Home/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Home/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
