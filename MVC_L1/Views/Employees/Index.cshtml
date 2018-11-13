@@ -5,8 +5,8 @@
     ViewBag.Title = "Список сотрудников";
 }
 
-    <p>Привет</p>
-    <table>
+    <div class="container">
+    <table class="table table-condensed">
         @foreach (var item in Model)
         {
         <tr>
@@ -19,3 +19,4 @@
         </tr>
         }
     </table>
+    </div>
